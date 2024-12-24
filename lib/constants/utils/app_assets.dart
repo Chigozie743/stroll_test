@@ -1,4 +1,4 @@
-class InfluxAssetsPath {
+class StrollAssetsPath {
   static const iconsPath = 'assets/icon';
 
   static const imagesPath = 'assets/images';

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:stroll/constants/utils/app_assets.dart';
+import 'package:stroll/constants/utils/color_constants.dart';
+import 'package:stroll/constants/widgets/custom_bottom_widget.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key, this.pageIndex = 0, this.childIndex = 0});
@@ -49,33 +52,26 @@ class _MainPageState extends State<MainPage> {
           }
         },
         child: Scaffold(
-          backgroundColor: InfluxColors.influxMilkyWhite,
+          backgroundColor: StrollColors.strollWhite,
           body: SizedBox(
             child: tabOptions.elementAt(selectedIndex),
           ),
           bottomNavigationBar: CustomBottomAppBar(
-            backgroundColor: InfluxColors.influxWhite,
+            backgroundColor: StrollColors.strollWhite,
             activeindex: selectedIndex,
             onTabSelected: _selectedTab,
             //color: selectedIndex == 4 ? null : null,
             height: 70.sp,
-            selectedColor: selectedIndex == 4 ? null : InfluxColors.influxBlue,
+            selectedColor: selectedIndex == 4 ? null : StrollColors.strollBlue,
             items: [
               CustomBottomAppBarItem(
-                  24.sp, 24.sp, selectedIndex == 0 ? InfluxAssetsPath.homeShadeIcon
-                    : InfluxAssetsPath.homeOutlineIcon, "Home",),
+                  24.sp, 24.sp, StrollAssetsPath.cardsIcon, "",),
               CustomBottomAppBarItem(
-                  24.sp, 24.sp, selectedIndex == 1 ? InfluxAssetsPath.bookShadeIcon 
-                    : InfluxAssetsPath.bookOutlineIcon, "My Books",),
+                  24.sp, 24.sp, StrollAssetsPath.fireIcon, "",),
               CustomBottomAppBarItem(
-                  24.sp, 24.sp, selectedIndex == 2 ? InfluxAssetsPath.heartShadeIcon 
-                    : InfluxAssetsPath.heartOutlineIcon, "Favourites"),
+                  24.sp, 24.sp, StrollAssetsPath.chatBubbleIcon, ""),
               CustomBottomAppBarItem(
-                  24.sp, 24.sp, selectedIndex == 3 ? InfluxAssetsPath.cartShadeIcon 
-                    : InfluxAssetsPath.cartOutlineIcon, "Cart"),
-              CustomBottomAppBarItem(
-                  24.sp, 24.sp, selectedIndex == 4 ? InfluxAssetsPath.profileShadeIcon
-                    : InfluxAssetsPath.profileOutlineIcon, "Account"),
+                  24.sp, 24.sp, StrollAssetsPath.userIcon, ""),
             ],
           ),
         ),
