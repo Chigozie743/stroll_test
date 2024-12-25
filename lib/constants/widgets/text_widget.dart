@@ -12,6 +12,7 @@ class StrollText extends StatelessWidget {
   final Color? textColor;
   final TextAlign? textAlign;
   final int? maxLines;
+  final FontStyle? fontStyle;
   final FontWeight? fontWeight;
   final TextDecoration? textDecoration;
 
@@ -24,6 +25,7 @@ class StrollText extends StatelessWidget {
     this.textColor,
     this.textAlign,
     this.maxLines,
+    this.fontStyle,
     this.fontWeight,
     this.letterSpacing,
     this.fontFamily = 'U8Regular',
@@ -42,6 +44,7 @@ class StrollText extends StatelessWidget {
         height: height,
         fontFamily: fontFamily,
         fontSize: fontSize ?? 22.sp,
+        fontStyle: fontStyle ?? FontStyle.normal,
         letterSpacing: letterSpacing ?? -0.5.sp,
         fontWeight: fontWeight ?? FontWeight.w600,
         color: textColor ?? StrollColors.strollBlack,

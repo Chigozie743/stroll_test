@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stroll/constants/utils/app_assets.dart';
 import 'package:stroll/constants/utils/color_constants.dart';
+import 'package:stroll/constants/widgets/text_widget.dart';
+import 'package:stroll/screens/home/home_widget/home_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -11,9 +14,16 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int _currentIndex = -1;
+
+  List<String> optionsList = ['A', 'B', 'C', 'D'];
+
+  List<String> answerList = ['The peace in the early mornings', 
+    'The magical golden hours', 'Wind-down time after dinners', 
+    'The serenity past midnight'];
+
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.sizeOf(context);
     return Scaffold(
       body: Container(
         width: double.infinity,
@@ -26,91 +36,166 @@ class _HomeScreenState extends State<HomeScreen> {
             fit: BoxFit.fill
           )
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Container(
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: StrollColors.strollBlack,
-                boxShadow: [BoxShadow(
-                  offset: const Offset(2, 2),
-                  blurRadius: 60.r,
-                  spreadRadius: 100.r,
+        child: SafeArea(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              ////////////////////////////////////////////////////////////////////////////////
+              /// FIRST PHASE: TOP PART
+              ///////////////////////////////////////////////////////////////////////////////
+              Column(
+                children: [
+                  SizedBox(height: 40.sp,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ShadowText(
+                        data: 'Stroll Bonfire',
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      ),
+                      SizedBox(width: 10.sp,),
+
+                      Icon(
+                        Icons.expand_more,
+                        color: StrollColors.strollBlueText,
+                        size: 30.sp,
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10.sp,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const RowAndTextWidget(
+                        text: '22h 00m',
+                        icon: StrollAssetsPath.clockIcon,
+                      ),
+                      SizedBox(width: 15.sp,),
+                      const RowAndTextWidget(
+                        text: '103',
+                        icon: StrollAssetsPath.userIcon,
+                      )
+                    ],
+                  ),
+                ],
+              ),
+
+              ////////////////////////////////////////////////////////////////////////////////
+              /// SECOND PHASE: BOTTOM PART
+              ///////////////////////////////////////////////////////////////////////////////
+              Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
                   color: StrollColors.strollBlack,
-                ),]
-              ),
-              child: Padding(
-                padding: EdgeInsets.only(
-                  top: 30.sp, bottom: 40.sp, right: 15.sp, left: 15.sp
+                  boxShadow: [BoxShadow(
+                    offset: const Offset(2, 2),
+                    blurRadius: 50.r,
+                    spreadRadius: 60.r,
+                    color: StrollColors.strollBlack,
+                  ),]
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    ////////////////////////////////////////////////////////////////////////////////
-                    /// TEXT SECTION
-                    ///////////////////////////////////////////////////////////////////////////////
-                    Row(
-                      children: [
-                        
-                      ],
-                    ),
-                    
-                    // InfluxText(
-                    //   text: 'Welcome to Influx',
-                    //   fontSize: 32.sp,
-                    //   textColor: InfluxColors.influxBlack,
-                    //   fontWeight: FontWeight.w400,
-                    //   textAlign: TextAlign.center,
-                    // ),
-                    // SizedBox(height: 10.sp,),
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    top: 0.sp, bottom: 40.sp, right: 20.sp, left: 20.sp
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ////////////////////////////////////////////////////////////////////////////////
+                      /// TEXT SECTION
+                      ///////////////////////////////////////////////////////////////////////////////
+                      const ProfileInfoWidget(
+                        question: 'What is your favorite time of the day?',
+                        quote: '“Mine is definitely the peace in the morning.”',
+                        image: StrollAssetsPath.picsImage,
+                        name: 'Angelina',
+                        age: '28',
+                      ),
+                      SizedBox(height: 20.sp,),
 
-                    // SizedBox(
-                    //   width: size.width.sp,
-                    //   child: InfluxText(
-                    //     text: 'Discover, buy, and dive into a world of books. From bestsellers to indie gems, find your next great read right here.',
-                    //     fontSize: 16.sp,
-                    //     textColor: InfluxColors.influxGreyText,
-                    //     fontWeight: FontWeight.w400,
-                    //     textAlign: TextAlign.center,
-                    //   ),
-                    // ),
-                    // SizedBox(height: 30.sp,),
+                      SizedBox(
+                        child: Column(
+                          children: [
+                            Wrap(
+                              spacing: 20.sp,
+                              runSpacing: 20.sp,
+                              children: [
+                                ...List.generate(optionsList.length, (index) {
+                                  return GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        _currentIndex = index;
+                                      });
+                                    },
+                                    child: QuestionOptionWidget(
+                                      option: optionsList[index],
+                                      answer: answerList[index],
+                                      outerBorderColor: index == _currentIndex 
+                                        ? StrollColors.strollBlue 
+                                        : StrollColors.transparentColor,
+                                      innerBorderColor: index == _currentIndex 
+                                        ? StrollColors.transparentColor 
+                                        : StrollColors.strollWhite,
+                                      innerBoxColor: index == _currentIndex 
+                                        ? StrollColors.strollBlue 
+                                        : StrollColors.transparentColor,
+                                    ),
+                                  );
+                                })
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 30.sp,),
 
-                    // /////////////////////////////////////////////////////////////////////////////////////////
-                    // /// BUTTON SECTION
-                    // /////////////////////////////////////////////////////////////////////////////////////////
-                    // InfluxIconButton(
-                    //   onClick: (){
-                    //     nextScreen(context, const SelectAccountTypeScreen());
-                    //   },
-                    //   text: 'Get Started',
-                    //   height: 56.sp,
-                    //   fontSize: 16.sp,
-                    //   width: size.width.sp,
-                    //   icon: InfluxAssetsPath.arrowRightIcon,
-                    //   textColor: InfluxColors.influxWhite,
-                    // ),
-                    // SizedBox(height: 15.sp,),
-
-                    // InfluxButton(
-                    //   onClick: (){
-                    //     nextScreen(context, const LoginScreen());
-                    //   },
-                    //   text: 'Login',
-                    //   height: 56.sp,
-                    //   fontSize: 16.sp,
-                    //   width: size.width.sp,
-                    //   textColor: InfluxColors.influxBlue,
-                    //   borderColor: InfluxColors.influxBlue,
-                    //   backgroundColor: InfluxColors.influxWhite,
-                    // ),
-                  ],
+                      StrollText(
+                        text: 'Pick your option. \nSee who has a similar mind.',
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w400,
+                        textColor: StrollColors.strollWhite,
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
+      ),
+
+      ////////////////////////////////////////////////////////////////////
+      /// FLOATING ACTION BUTTON
+      ////////////////////////////////////////////////////////////////////
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            shape: CircleBorder(
+              side: BorderSide(
+                width: 2.sp,
+                color: StrollColors.strollBlue,
+              )
+            ),
+            backgroundColor: StrollColors.transparentColor,
+            onPressed: (){},
+            child: SvgPicture.asset(
+              StrollAssetsPath.microphoneIcon,
+              height: 30.sp,
+              width: 30.sp,
+            ),
+          ),
+          SizedBox(width: 10.sp,),
+          FloatingActionButton(
+            shape: const CircleBorder(),
+            backgroundColor: StrollColors.strollBlue,
+            onPressed: (){},
+            child: Icon(
+              Icons.arrow_forward,
+              size: 32.sp,
+            ),
+          ),
+        ]
       ),
     );
   }

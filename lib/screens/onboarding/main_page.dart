@@ -62,7 +62,7 @@ class _MainPageState extends State<MainPage> {
             onTabSelected: _selectedTab,
             //color: selectedIndex == 4 ? null : null,
             height: 70.sp,
-            selectedColor: selectedIndex == 4 ? null : StrollColors.strollBlue,
+            selectedColor: StrollColors.strollBlue,
             items: [
               CustomBottomAppBarItem(
                   34.sp, 34.sp, StrollAssetsPath.cardsIcon, "",),
@@ -71,7 +71,7 @@ class _MainPageState extends State<MainPage> {
               CustomBottomAppBarItem(
                   29.sp, 29.sp, StrollAssetsPath.chatBubbleIcon, ""),
               CustomBottomAppBarItem(
-                  44.sp, 44.sp, StrollAssetsPath.userIcon, ""),
+                  29.sp, 29.sp, StrollAssetsPath.userIcon, ""),
             ],
           ),
         ),

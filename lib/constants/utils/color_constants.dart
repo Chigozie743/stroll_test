@@ -19,9 +19,13 @@ class StrollColors {
   // =================== Text Colors===============================
   static const Color strollGreyText = Color(0xFF6A6A6A);
 
+  static const Color strollBlueText = Color(0xFFCCC8FF);
+
   static const Color whiteText = Color(0xFFFFFFFF);
 
   static const Color strollIconColor = Color(0xFF6F6E7C);
+
+  static const Color strollLightGreyText = Color(0xFFC4C4C4);
 
 
 }
