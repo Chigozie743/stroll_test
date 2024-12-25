@@ -60,18 +60,18 @@ class _MainPageState extends State<MainPage> {
             backgroundColor: StrollColors.strollLightDark,
             activeindex: selectedIndex,
             onTabSelected: _selectedTab,
-            //color: selectedIndex == 4 ? null : null,
+            color: StrollColors.strollIconColor,
             height: 70.sp,
             selectedColor: StrollColors.strollBlue,
             items: [
               CustomBottomAppBarItem(
-                  34.sp, 34.sp, StrollAssetsPath.cardsIcon, "",),
+                  34.sp, 34.sp, StrollAssetsPath.cardsIcon,),
               CustomBottomAppBarItem(
-                  34.sp, 34.sp, StrollAssetsPath.fireIcon, "",),
+                  34.sp, 34.sp, StrollAssetsPath.fireIcon,),
               CustomBottomAppBarItem(
-                  29.sp, 29.sp, StrollAssetsPath.chatBubbleIcon, ""),
+                  29.sp, 29.sp, StrollAssetsPath.chatBubbleIcon,),
               CustomBottomAppBarItem(
-                  29.sp, 29.sp, StrollAssetsPath.userIcon, ""),
+                  29.sp, 29.sp, StrollAssetsPath.userIcon,),
             ],
           ),
         ),

@@ -8,13 +8,11 @@ class CustomBottomAppBarItem {
   final double? iconHeight;
   final double? iconWidth;
   final String imageData;
-  final String text;
 
   CustomBottomAppBarItem(
     this.iconHeight,
     this.iconWidth,
     this.imageData, 
-    this.text,
   );
 }
 
@@ -108,9 +106,6 @@ class CustomBottomAppBarState extends State<CustomBottomAppBar> {
   }) {
     Color? color =
         _selectedIndex == index ? widget.selectedColor : widget.color;
-    Color? textColor =
-        _selectedIndex == index ? StrollColors.strollBlue 
-        : StrollColors.strollIconColor;
 
     Size size = MediaQuery.of(context).size;
     return Expanded(
@@ -134,12 +129,6 @@ class CustomBottomAppBarState extends State<CustomBottomAppBar> {
                   color: color,
                   height: item.iconHeight ?? 20.sp, // Use provided value or default
                   width: item.iconWidth ?? 20.sp,
-                ),
-                StrollText(
-                  text: item.text,
-                  textColor: textColor,
-                  fontSize: 12.sp,
-                  fontWeight: FontWeight.w400,
                 ),
               ],
             ),
