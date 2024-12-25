@@ -8,9 +8,11 @@ class StrollColors {
 
   static const Color strollGrey = Color(0xFF232A2E);
 
-  static const Color strollBlack = Color(0xFF0E0E0E);
+  static const Color strollBlack = Color(0xFF000000);
 
   static const Color strollWhite = Color(0xFFFFFFFF);
+
+  static const Color strollLightDark = Color(0xFF101115);
 
   static const Color transparentColor = Colors.transparent;
 

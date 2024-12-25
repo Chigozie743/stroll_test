@@ -88,8 +88,8 @@ class CustomBottomAppBarState extends State<CustomBottomAppBar> {
 
     // Bottom App Bar Implementation
     return BottomAppBar(
-      color: StrollColors.strollWhite,
-      surfaceTintColor: StrollColors.strollWhite,
+      color: StrollColors.strollLightDark,
+      surfaceTintColor: StrollColors.strollLightDark,
       shadowColor: StrollColors.strollBlack,
       elevation: 10.sp,
       shape: widget.notchedShape,

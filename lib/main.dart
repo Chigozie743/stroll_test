@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:stroll/constants/utils/color_constants.dart';
+import 'package:stroll/screens/onboarding/main_page.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -49,7 +50,7 @@ class MyApp extends StatelessWidget {
                       brightness: Brightness.light,
                 ),
               ),
-              home: Container(),
+              home: const MainPage(pageIndex: 0,),
             );
           }
         );

@@ -1,12 +1,10 @@
 class StrollAssetsPath {
-  static const iconsPath = 'assets/icon';
+  static const iconsPath = 'assets/icons';
 
   static const imagesPath = 'assets/images';
 
-  static const logosPath = 'assets/logos';
-
   //***************** APP Icons ********************
-  static const userIcon = "$iconsPath/user.png";
+  static const userIcon = "$iconsPath/user.svg";
 
   static const fireIcon = "$iconsPath/fire.svg";
 

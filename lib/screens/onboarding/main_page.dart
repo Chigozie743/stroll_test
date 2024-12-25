@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stroll/constants/utils/app_assets.dart';
 import 'package:stroll/constants/utils/color_constants.dart';
 import 'package:stroll/constants/widgets/custom_bottom_widget.dart';
+import 'package:stroll/screens/home/home.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key, this.pageIndex = 0, this.childIndex = 0});
@@ -27,8 +28,7 @@ class _MainPageState extends State<MainPage> {
 
   // The tab options and the respective screens
   late List<Widget> tabOptions = [
-    Container(),
-    Container(),
+    const HomeScreen(),
     Container(),
     Container(),
     Container(),
@@ -52,12 +52,12 @@ class _MainPageState extends State<MainPage> {
           }
         },
         child: Scaffold(
-          backgroundColor: StrollColors.strollWhite,
+          backgroundColor: StrollColors.strollBlack,
           body: SizedBox(
             child: tabOptions.elementAt(selectedIndex),
           ),
           bottomNavigationBar: CustomBottomAppBar(
-            backgroundColor: StrollColors.strollWhite,
+            backgroundColor: StrollColors.strollLightDark,
             activeindex: selectedIndex,
             onTabSelected: _selectedTab,
             //color: selectedIndex == 4 ? null : null,
@@ -65,13 +65,13 @@ class _MainPageState extends State<MainPage> {
             selectedColor: selectedIndex == 4 ? null : StrollColors.strollBlue,
             items: [
               CustomBottomAppBarItem(
-                  24.sp, 24.sp, StrollAssetsPath.cardsIcon, "",),
+                  34.sp, 34.sp, StrollAssetsPath.cardsIcon, "",),
               CustomBottomAppBarItem(
-                  24.sp, 24.sp, StrollAssetsPath.fireIcon, "",),
+                  34.sp, 34.sp, StrollAssetsPath.fireIcon, "",),
               CustomBottomAppBarItem(
-                  24.sp, 24.sp, StrollAssetsPath.chatBubbleIcon, ""),
+                  29.sp, 29.sp, StrollAssetsPath.chatBubbleIcon, ""),
               CustomBottomAppBarItem(
-                  24.sp, 24.sp, StrollAssetsPath.userIcon, ""),
+                  44.sp, 44.sp, StrollAssetsPath.userIcon, ""),
             ],
           ),
         ),
